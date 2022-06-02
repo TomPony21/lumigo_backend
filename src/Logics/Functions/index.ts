@@ -1,3 +1,3 @@
-import { sleepFunction } from "./sleepFunction";
+import { sleepFunction } from './sleepFunction';
 
 export { sleepFunction }
