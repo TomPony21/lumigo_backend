@@ -1,13 +1,7 @@
-import { addActiveInstance } from '../../AppStorage';
 import { sleepFunction } from '../Functions';
 
-const startSleepFunction = (message: string): void => {
-    const sleepFunc = new sleepFunction(message)
-    sleepFunc.currentProcess.start();
-    addActiveInstance();
+const startSleepFunction = async (message: string): Promise<void> => {
+    sleepFunction.runWrapper(message);
 }
 
 export { startSleepFunction }
-
-
-

@@ -2,7 +2,8 @@ import { FastifyPluginCallback, FastifyReply, FastifyRequest } from 'fastify';
 import { messagesRouteSchema } from './schemas';
 import { messageQueue } from './types';
 import { startSleepFunction } from '../../../Logics/Scheduler';
-import { getStatistics } from '../../../AppStorage';
+import { getStatistics ,addTotalInstance } from '../../../AppStorage';
+
 
 export const functionsRoutes: FastifyPluginCallback = (server, option, done): void => {
     server.get('/statistics', (request: FastifyRequest, reply: FastifyReply): void => {
@@ -14,10 +15,11 @@ export const functionsRoutes: FastifyPluginCallback = (server, option, done): vo
         }
     });
 
-    server.post('/messages', { schema: { body: messagesRouteSchema } }, (request: FastifyRequest, reply: FastifyReply): void => {
+    server.post('/messages', { schema: { body: messagesRouteSchema } }, async(request: FastifyRequest, reply: FastifyReply): Promise<void> => {
         try {
             const { message } = request.body as messageQueue;
-            startSleepFunction(message);
+            await startSleepFunction(message);
+            addTotalInstance();
             reply.send('Start Running Process !');
         } catch (error: any) {
             reply.internalServerError(error.message);

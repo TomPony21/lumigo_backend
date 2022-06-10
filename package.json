@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node dist/index.js",
+    "start": "node --inspect-brk dist/index.js",
     "build": "tsc --build",
     "lint": "eslint . --ext .ts"
   },
@@ -17,10 +17,12 @@
     "fs": "0.0.1-security",
     "local-storage": "^2.0.0",
     "localStorage": "^1.0.4",
-    "teen_process": "^1.16.0"
+    "teen_process": "^1.16.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@types/teen_process": "^1.16.0",
+    "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^4.12.0",
     "@typescript-eslint/parser": "^4.12.0",
     "eslint": "^7.17.0",
