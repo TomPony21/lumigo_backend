@@ -1,5 +1,6 @@
 import fastify, { FastifyInstance } from 'fastify';
 import fastifyBlipp from 'fastify-blipp';
+// @ts-ignore - Non type package
 import fastifySensible from 'fastify-sensible';
 import config from './Config';
 import apiRouts from './Routes/api';
